@@ -1,0 +1,10 @@
+.git
+
+.circleci
+test-queries
+.env-example
+node_modules
+
+*.md
+
+frontend
