@@ -1,0 +1,24 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+metadata:
+  name: server
+build:
+  artifacts:
+  - image: backend
+  - image: frontend
+    context: frontend
+deploy:
+  # kubectl:
+  #   manifests:
+  #   - k8s/backend.yaml
+  #   - k8s/frontend.yaml
+  helm:
+    releases:
+    - name: speckle
+      chartPath: charts/speckle
+      values:
+        backend.image: backend
+        frontend.image: frontend
+      # artifactOverrides:
+      #   backend.image: backend
+      #   frontend.image: frontend
